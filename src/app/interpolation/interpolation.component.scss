@@ -1,0 +1,59 @@
+//Interpolation 
+
+$gap: left;
+$val : 100;
+
+.gap-#{$gap}-#{$val}{
+    margin-#{$gap}: 50px;
+}
+
+@mixin  gapval($side, $value) {
+    margin-#{$side}: #{$value} +px;
+}
+
+@mixin property($sideval, $val , $prop) {
+    #{$prop}-#{$sideval} : $val +px
+}
+.myClass{
+ @include gapval(left, 200)
+}
+
+.classwith{
+@include property(right,150 ,margin )
+}
+
+
+// @content Directive
+
+@mixin myMixin{
+    font-size: 24px;
+    @content;
+}
+
+@mixin device-tab-land {
+    @media  (max-width:1200px) {
+        @content;
+    }
+}
+
+@mixin device-tab-port {
+    @media  (max-width:900px) {
+        @content;
+    }
+}
+
+@mixin device-tab-mobile {
+    @media  (max-width:600px) {
+        @content;
+    }
+}
+
+.class-1{
+    @include myMixin(){
+        background: red;
+    };
+}
+
+.class-2{
+    @include myMixin();
+}

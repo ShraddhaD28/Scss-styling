@@ -1,0 +1,118 @@
+// @If and @Else Condition  
+
+//Case 1:
+$value : high;
+.myClass1
+{
+    @if  $value == high {
+        margin: 20px;
+    }
+    @else if $value == low {
+        margin: 50px;
+    }
+    @else {
+        margin: 40px;
+    }
+}
+
+//Case 2 
+@mixin  myStyle($value) {
+    font-size: $value +px;
+   @if $value > 100 { color: green; }
+   @else if $value == 100 { color: yellow; }
+   @else {color: red; }
+}
+
+.myClass2{
+    @include myStyle(100)
+}
+
+//case 3
+@function getValue($type){
+    @if $type == header{
+        @return 30px;
+    }
+    @else if $type== footer{
+        @return 50px;
+    }
+    @else {
+        @return 20px;
+    }
+}
+
+//Case 4
+@mixin  box($boxStyle) {
+    @if $boxStyle == dark{
+    background-color: black;
+    color: blanchedalmond;
+}
+   @else {
+       background: blanchedalmond;
+       color: black;
+   }
+}
+
+.myClass4{
+    width: 200px;
+    margin: 100px;
+    padding: 25px;
+    border-radius: 5px;
+    @include box(dark)
+}
+
+// For Loop 
+
+@for $i from 1 to 5 {  // For Loop till 4
+    .box{
+        width: 100px;
+    }
+}
+
+@for $i from 1 through 5 {  // For Loop till 5
+    .box-#{$i * 100}{
+        width: 100px;
+        background: darken(pink , $i*10%);
+        border: 2px solid black;
+        padding: 25px;
+    }
+}
+
+
+// For Each Loop
+
+$devices: desktop, tablet , mobile;
+
+@each $activeDevices in $devices {
+   // .#{$activeDevices}{
+        //background: url(images/#{$activeDevices}.jpg);
+   // }
+}
+
+// While Loop
+
+$i:1;
+
+@while  $i < 4  {
+    .col-md-#{$i}{
+        width: 100px;
+    }
+    $i: $i + 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

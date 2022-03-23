@@ -1,0 +1,36 @@
+// Build In Functions
+
+//1) darken($colorName , 15%)
+
+//2) lighten($colorName , 15%)
+
+//3) map-get($map , $key)
+
+//4) mix(color , color)
+
+
+// Custom Functions
+
+@function sum($val1, $val2){
+    @return $val1+$val2;
+}
+
+.function{
+    background: red;
+    border: 1px solid red;
+    font-family: 'Roboto','sans-serif';
+
+    font-size: sum(50,40)*1px;
+
+    color: white;
+}
+
+.function:hover{
+   // background: darken(red , 15%);
+   // background: lighten(red , 15%);
+   background: mix(yellow , rgb(0, 255, 21));
+}
+
+//.header{
+   // background: url(assets/images/positive.jpg);
+//}

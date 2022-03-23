@@ -1,0 +1,101 @@
+// Variables
+$color-primary:rgb(149, 231, 18);
+$box-border:1px solid burlywood;
+$box-padding:20px;
+$box-width:400px;
+
+// mixin is use reusable code avoid repeatation
+@mixin box-block {
+    border: $box-border;
+    padding: $box-padding;
+    border-radius: 5px;
+    width: $box-width;
+}
+
+//mixin with argument
+@mixin btn($btn-color) {
+    color: white;
+    font-size: 18px;
+    padding: 9px 12px;
+    border-radius: 5px;
+    display: inline-block;
+    background-color: $btn-color;
+}
+
+// Color Function
+$colors:(
+    blue-color:blue,
+    yellow-color:yellow,
+    green-color:green,
+);
+
+// Box-1
+.box1{
+    @include box-block;
+    background: white;
+}
+
+.box1 h2{
+       color:$color-primary;
+}
+
+.box1 p{
+        text-align: center;
+}
+
+.box1 button{
+    @include btn(green);
+   // background-color: $color-primary;
+    
+}
+
+.box1 a{
+    text-decoration: none;
+}
+
+.box1 button:hover{
+    cursor: pointer;
+    // background: darken($color-primary, 15%);
+    // background: lighten($color-primary, 15%);  
+      background: map-get($colors, yellow-color );
+}
+
+
+// Nesting of element
+ul{
+    list-style-type: square;
+    li{
+        padding: 15px;
+          a{
+            background: peru;
+            display: inline-block;
+            padding: 10px;
+            color: white;
+
+            &:hover{
+                background: palevioletred;
+            }
+           }
+     &:first-child{
+         border: 2px solid red;
+     }
+    }
+}
+
+// Box-2
+.box2{
+        @include box-block;
+        background: rgb(184, 115, 115);   
+}
+
+.box2 h2{
+    color:$color-primary
+}
+
+.box2 button{
+    @include btn(coral);
+  //  background-color:coral ;
+}
+
+
+
